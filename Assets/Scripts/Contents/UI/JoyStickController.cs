@@ -1,8 +1,10 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
+/// <summary>
+/// 조이스틱을 관리하는 컨트롤러
+/// 움직임이 있을 시 플레이어에게 방향을 전달한다.
+/// </summary>
 public class JoyStickController : MonoBehaviour
 {
     [SerializeField] private RectTransform frame;
@@ -27,7 +29,7 @@ public class JoyStickController : MonoBehaviour
     {
         frame.position = eventData.position;
         frame.gameObject.SetActive(true);
-        player.State = Define.ECharacterState.MOVE;
+        player.State = Define.EUnitState.MOVE;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -50,6 +52,6 @@ public class JoyStickController : MonoBehaviour
     {
         frame.gameObject.SetActive(false);
         player.MovementReset();
-        player.State = Define.ECharacterState.IDLE;
+        player.State = Define.EUnitState.IDLE;
     }
 }

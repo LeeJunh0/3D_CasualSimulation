@@ -1,6 +1,10 @@
 using DG.Tweening;
 using UnityEngine;
 
+/// <summary>
+/// 플레이어를 관리하는 컨트롤러
+/// 움직임은 캐릭터 컨트롤러를 기반으로 만들었다.
+/// </summary>
 public class PlayerController : BaseController
 {
     // 조이스틱UI
@@ -31,7 +35,8 @@ public class PlayerController : BaseController
         if (direction.magnitude < 0.01f)
             return;
 
-        characterController.Move(new Vector3(direction.x * unitData.MoveSpeed * Time.deltaTime, 0, direction.z * unitData.MoveSpeed * Time.deltaTime));
+        Vector3 velocity = new Vector3(direction.x, 0, direction.z) * unitData.MoveSpeed * Time.deltaTime;
+        characterController.Move(velocity);
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.DORotateQuaternion(targetRotation, 0.1f);
     }

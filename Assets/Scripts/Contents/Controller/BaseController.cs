@@ -4,14 +4,13 @@ using static Define;
 
 public class BaseController : MonoBehaviour
 {
-    [SerializeField] private ECharacterState curState = ECharacterState.IDLE;
+    [SerializeField] private EUnitState curState = EUnitState.IDLE;
     [SerializeField] protected UnitData unitData;
 
     private Animator anim;
     private float currentHp;
 
-
-    public ECharacterState State 
+    public EUnitState State 
     {
         get => curState;
         set 
@@ -22,19 +21,19 @@ public class BaseController : MonoBehaviour
 
             switch (curState)
             {
-                case ECharacterState.IDLE:
+                case EUnitState.IDLE:
                     anim.CrossFade("Idle", 0.1f);
                     break;
-                case ECharacterState.MOVE:
+                case EUnitState.MOVE:
                     anim.CrossFade("Move", 0.1f);
                     break;
-                case ECharacterState.ATTACK:
+                case EUnitState.ATTACK:
                     anim.CrossFade("Attack", 0.1f);
                     break;
-                case ECharacterState.HIT:
+                case EUnitState.HIT:
                     anim.CrossFade("Hit", 0.1f);
                     break;
-                case ECharacterState.DEAD:
+                case EUnitState.DEAD:
                     anim.CrossFade("Dead", 0.1f);
                     break;
 
@@ -57,11 +56,11 @@ public class BaseController : MonoBehaviour
         // »ç¸Á
         if (currentHp <= 0)
         {
-            State = ECharacterState.DEAD;
+            State = EUnitState.DEAD;
             DeadProcess();
         }
         else
-            State = ECharacterState.HIT;
+            State = EUnitState.HIT;
     }
 
     public virtual void DeadProcess()

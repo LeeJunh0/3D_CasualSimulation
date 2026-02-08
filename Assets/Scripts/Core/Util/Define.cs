@@ -9,7 +9,7 @@ public class Define
         ENDDRAG,
     }
 
-    public enum ECharacterState
+    public enum EUnitState
     {
         IDLE,
         MOVE,

@@ -10,7 +10,7 @@ public class PlayerCamController : MonoBehaviour
     
     private void LateUpdate()
     {
-        Vector3 targetPos = playerPos.position + offset;
+        Vector3 targetPos = new Vector3(playerPos.position.x + offset.x, offset.y, playerPos.position.z + offset.z);
         transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, followTime);
     }
 }
