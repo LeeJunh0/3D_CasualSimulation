@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -29,7 +30,7 @@ public class JoyStickController : MonoBehaviour
     {
         frame.position = eventData.position;
         frame.gameObject.SetActive(true);
-        player.State = Define.EUnitState.MOVE;
+        player.MoveStart();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -52,6 +53,5 @@ public class JoyStickController : MonoBehaviour
     {
         frame.gameObject.SetActive(false);
         player.MovementReset();
-        player.State = Define.EUnitState.IDLE;
     }
 }

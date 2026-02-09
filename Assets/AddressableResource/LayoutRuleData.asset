@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c113ff064b10c427fb3a071e46ace37d, type: 3}
+  m_Name: LayoutRuleData
+  m_EditorClassIdentifier: 
+  _layoutRule:
+    _settings:
+      _excludeUnversioned:
+        _value: 0
+      _versionExpression:
+        _value: 
+    _addressRules:
+      _internalList:
+      - _id: 09964947-1580-4dac-bdd3-fdbaea6cc91b
+        _addressableGroup: {fileID: 11400000, guid: f46afa35a55067641a121191ec877e25, type: 2}
+        _control:
+          _value: 1
+        _assetGroups:
+          _internalList:
+          - _id: 3a5e2eb7-89cd-4880-8c18-e2a4a470fd6d
+            _name:
+              _value: Default Asset Group
+            _filters:
+              _internalList:
+              - rid: 7129991178994843932
+        _addressProviderInternal:
+          rid: 7129991178994843930
+    _labelRules:
+      _internalList:
+      - _id: 41b84043-6510-4421-8e8d-ffe9cdd40317
+        _name:
+          _value: Object
+        _assetGroups:
+          _internalList:
+          - _id: 3c82d53f-5502-42f1-abbf-6de424b06467
+            _name:
+              _value: Default Asset Group
+            _filters:
+              _internalList:
+              - rid: 7129991178994843934
+        _labelProviderInternal:
+          rid: 7129991178994843933
+    _versionRules:
+      _internalList: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7129991178994843930
+      type: {class: AssetPathBasedAddressProvider, ns: SmartAddresser.Editor.Core.Models.LayoutRules.AddressRules, asm: SmartAddresser.Editor}
+      data:
+        _source: 1
+        _replaceWithRegex: 1
+        _pattern: 
+        _replacement: 
+    - rid: 7129991178994843932
+      type: {class: ObjectBasedAssetFilter, ns: SmartAddresser.Editor.Core.Models.Shared.AssetGroups.AssetFilterImpl, asm: SmartAddresser.Editor}
+      data:
+        _id: a57c1115-361a-4017-8fa9-bc306b408f67
+        _folderTargetingMode: 0
+        _object:
+          _isListMode: 0
+          _values:
+          - {fileID: 102900000, guid: a84837caf51b76441a43170caea2a711, type: 3}
+    - rid: 7129991178994843933
+      type: {class: ConstantLabelProvider, ns: SmartAddresser.Editor.Core.Models.LayoutRules.LabelRules, asm: SmartAddresser.Editor}
+      data:
+        _label: MainGame
+    - rid: 7129991178994843934
+      type: {class: ObjectBasedAssetFilter, ns: SmartAddresser.Editor.Core.Models.Shared.AssetGroups.AssetFilterImpl, asm: SmartAddresser.Editor}
+      data:
+        _id: ea9d7496-3ba7-4d41-a260-21d2132c3b43
+        _folderTargetingMode: 0
+        _object:
+          _isListMode: 0
+          _values:
+          - {fileID: 102900000, guid: a84837caf51b76441a43170caea2a711, type: 3}

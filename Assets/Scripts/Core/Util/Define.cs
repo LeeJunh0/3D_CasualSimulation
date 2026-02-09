@@ -13,7 +13,7 @@ public class Define
     {
         IDLE,
         MOVE,
-        ATTACK,
+        INTERACTION,
         HIT,
         DEAD,
         
