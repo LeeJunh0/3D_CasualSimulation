@@ -11,6 +11,10 @@ public class MainManager : MonoBehaviour
     public static AddressableManager Addressable => Instance.addressableManager;
     public static ResourceManager Resource => Instance.resourceManager;
 
+    [SerializeField] private GameManager gameManager;
+
+    public GameManager Game => Instance.gameManager;
+
     private void Awake()
     {
         if (Instance == null)
@@ -22,6 +26,10 @@ public class MainManager : MonoBehaviour
             string log = $"[LOADING] {key} {cur} / {total}";
             Debug.Log($"<color=cyan>{log}</color>");
 #endif
+            if (cur == total)
+            {
+                Game.Init();
+            }
         });
         DontDestroyOnLoad(gameObject);
     }

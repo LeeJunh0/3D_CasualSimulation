@@ -1,9 +1,18 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public static class Util
 {
+    public static Tweener DOSize(this SpriteRenderer spriteRenderer, Vector2 value, float duration)
+    {
+        return DOTween.To(() => 
+        spriteRenderer.size,
+        x => spriteRenderer.size = x,
+        value, duration).SetTarget(spriteRenderer);
+    }
+
     public static void AddEvent(this GameObject go, Action<PointerEventData> action = null, Define.EEventType type = Define.EEventType.LEFTCLICK)
     {
         EventHandler eventHandler = go.GetComponent<EventHandler>();

@@ -18,4 +18,12 @@ public class Define
         DEAD,
         
     }
+
+    public enum EInteractionType
+    {
+        PLAYER,
+        SCV,
+        ANIMAL,
+        OBJECT
+    }
 }

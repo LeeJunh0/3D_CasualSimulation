@@ -4,6 +4,6 @@ using System;
 public class UnitData
 {
     public float MoveSpeed;
-    public float Attack;
-    public float Health;
+    public float InteractionSpeed;
+    public int Capacity;
 }

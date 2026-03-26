@@ -1,10 +1,11 @@
+using Contents.Controller.Player;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// Á¶ÀÌ½ºÆ½À» °ü¸®ÇÏ´Â ÄÁÆ®·Ñ·¯
-/// ¿òÁ÷ÀÓÀÌ ÀÖÀ» ½Ã ÇÃ·¹ÀÌ¾î¿¡°Ô ¹æÇâÀ» Àü´ÞÇÑ´Ù.
+/// ï¿½ï¿½ï¿½Ì½ï¿½Æ½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½
+/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 /// </summary>
 public class JoyStickController : MonoBehaviour
 {

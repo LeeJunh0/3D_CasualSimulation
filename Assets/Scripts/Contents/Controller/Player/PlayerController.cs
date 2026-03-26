@@ -1,56 +1,83 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
-/// <summary>
-/// ÇÃ·¹ÀÌ¾î¸¦ °ü¸®ÇÏ´Â ÄÁÆ®·Ñ·¯
-/// ¿òÁ÷ÀÓÀº Ä³¸¯ÅÍ ÄÁÆ®·Ñ·¯¸¦ ±â¹ÝÀ¸·Î ¸¸µé¾ú´Ù.
-/// </summary>
-public class PlayerController : BaseController
+namespace Contents.Controller.Player
 {
-    // Á¶ÀÌ½ºÆ½UI
-    [SerializeField] private JoyStickController joystick;
 
-    private CharacterController characterController;
-    private Vector3 direction;
-
-    public void Init()
+    public struct MoneyEvent : IEvent
     {
-        characterController = GetComponent<CharacterController>();
-        stateController = new UnitStateController(this);
-        joystick.Init(this);
+        public readonly int money;
+
+        public MoneyEvent(int _money)
+        {
+            money = _money;
+        }
     }
 
-    private void Update()
+    public class PlayerController : BaseController
     {
-        Movement();
-    }
+        // ï¿½ï¿½ï¿½Ì½ï¿½Æ½UI
+        [SerializeField] private JoyStickController joystick;
+        [SerializeField] private TextMeshProUGUI text;
 
-    #region Move °ü·Ã
-    public void MoveDirectionSet(Vector3 dir)
-    {
-        direction = dir;
-    }
+        private CharacterController characterController;
+        private Vector3 direction;
 
-    public void MoveStart()
-    {
-        stateController.ChangeState(Define.EUnitState.MOVE);
-    }
+        public int curMoney = 0;
 
-    private void Movement()
-    {
-        if (direction.magnitude < 0.01f)
-            return; 
+        public override void Init()
+        {
+            base.Init();
 
-        Vector3 velocity = new Vector3(direction.x, 0, direction.z) * unitData.MoveSpeed * Time.deltaTime;
-        characterController.Move(velocity);
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.DORotateQuaternion(targetRotation, 0.2f);
-    }
+            InteractionType = Define.EInteractionType.PLAYER;
+            InteractionSet();
+            characterController = GetComponent<CharacterController>();
+            joystick.Init(this);
 
-    public void MovementReset()
-    {
-        direction = Vector3.zero;
-        stateController.ChangeState(Define.EUnitState.IDLE);
+            WeakEventBus.Subcribe<MoneyEvent>(MoneyUpdate);
+            text.SetText(0.ToString());
+        }
+
+        private void Update()
+        {
+            Movement();
+        }
+
+        private void MoneyUpdate(MoneyEvent moneyEvent)
+        {
+            curMoney += moneyEvent.money;
+            text.SetText(curMoney.ToString());
+        }
+
+        #region Move ï¿½ï¿½ï¿½ï¿½
+        public void MoveDirectionSet(Vector3 dir)
+        {
+            direction = dir;
+        }
+
+        public void MoveStart()
+        {
+            stateController.ChangeState(Define.EUnitState.MOVE);
+        }
+
+        private void Movement()
+        {
+            if (direction.magnitude < 0.01f)
+                return;
+
+            Vector3 velocity = new Vector3(direction.x, 0, direction.z) * (unitData.MoveSpeed * Time.deltaTime);
+            characterController.Move(velocity);
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.DORotateQuaternion(targetRotation, 0.2f);
+        }
+
+        public void MovementReset()
+        {
+            direction = Vector3.zero;
+
+            stateController.ChangeState(Define.EUnitState.IDLE);
+        }
+        #endregion
     }
-    #endregion
 }

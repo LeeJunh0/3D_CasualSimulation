@@ -51,6 +51,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - MainGame
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4c1f8c755ffa7045b97d30ce5c2ffb1
+    m_Address: Cube
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MainGame
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ad9a4470a6bf6254da50d6feed4b8b1a, type: 2}
   m_SchemaSet:
